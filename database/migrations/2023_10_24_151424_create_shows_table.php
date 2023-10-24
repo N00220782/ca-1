@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('description');
             $table->foreignId('venue_id');
             $table->foreign('venue_id')->references('id')->on('venues');
+            $table->timestamps();
         });
     }
 

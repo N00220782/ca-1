@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('capacity');
             $table->string('phone');
             $table->string('email');
+            $table->timestamps();
         });
     }
 

@@ -12,4 +12,8 @@ class Show extends Model
     public function venue(){
         return $this->hasOne(Venue::class);
     }
+
+    public function artists(){
+        return hasMany(Artist::class);
+    }
 }

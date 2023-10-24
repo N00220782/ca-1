@@ -19,6 +19,43 @@ class VenueSeeder extends Seeder
         $venue1->capacity = '13000';
         $venue1->phone = '086 123 1234';
         $venue1->email = '3arena@venue.com';
+        $venue1->timestamps;
         $venue1->save();
+
+        $venue2 = New Venue;
+        $venue2->name = 'RDS';
+        $venue2->address = 'Dublin';
+        $venue2->capacity = '18500';
+        $venue2->phone = '086 123 1234';
+        $venue2->email = 'RDS@venue.com';
+        $venue2->timestamps;
+        $venue2->save();
+
+        $venue3 = New Venue;
+        $venue3->name = 'The Academy';
+        $venue3->address = 'Dublin';
+        $venue3->capacity = '850';
+        $venue3->phone = '086 123 1234';
+        $venue3->email = 'theacademy@venue.com';
+        $venue3->timestamps;
+        $venue3->save();
+
+        $venue3 = New Venue;
+        $venue3->name = 'Vicar Street';
+        $venue3->address = 'Dublin';
+        $venue3->capacity = '2550';
+        $venue3->phone = '086 123 1234';
+        $venue3->email = 'vicars@venue.com';
+        $venue3->timestamps;
+        $venue3->save();
+
+        $venue3 = New Venue;
+        $venue3->name = 'The Olympia';
+        $venue3->address = 'Dublin';
+        $venue3->capacity = '1240';
+        $venue3->phone = '086 123 1234';
+        $venue3->email = 'olympia@venue.com';
+        $venue3->timestamps;
+        $venue3->save();
     }
 }

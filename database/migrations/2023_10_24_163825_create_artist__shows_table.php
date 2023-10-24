@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artists', function (Blueprint $table) {
+        Schema::create('artist__shows', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('genre', ['pop', 'rock', 'metal', 'jazz', 'hip hop', 'electronic']);
+            $table->foreignId('artist_id');
+            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreignId('show_id');
+            $table->foreign('show_id')->references('id')->on('shows');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artists');
+        Schema::dropIfExists('artist__shows');
     }
 };
