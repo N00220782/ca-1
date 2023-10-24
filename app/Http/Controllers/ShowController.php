@@ -12,7 +12,7 @@ class ShowController extends Controller
      */
     public function index()
     {
-        $shows = Show::orderBy('name', 'date', 'start_time', 'end_time', 'ticket_price', 'description', 'venue_id')->paginate(8);
+        $shows = Show::all();
         return view('shows.index', [
             'shows' => $shows
         ]);
