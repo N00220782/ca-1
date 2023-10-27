@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Artist;
 
 class ArtistSeeder extends Seeder
 {
@@ -61,7 +62,7 @@ class ArtistSeeder extends Seeder
         $artist8->save();
 
         $artist9 = New Artist;
-        $artist9->name = 'Dystopia';
+        $artist9->name = 'Electric Wizard';
         $artist9->genre = 'metal';
         $artist9->timestamps;
         $artist9->save();
