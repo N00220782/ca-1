@@ -36,41 +36,35 @@ class VenueController extends Controller
         //validation rules
         $rules = [
             'name' => 'required|string|unique:shows,name|min:2|max:150',
-            'date' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'ticket_price' => 'required',
-            'description' => 'required|string|min:5|max:1000',
-            'venue_id' => 'required'
+            'address' => 'required',
+            'capacity' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
         ];
 
         $messages = [
-            'name.unique' => 'Show name should be unique.',
-            'name.required' => 'Show name is required.',
-            'date.required' => 'Show date is required.',
-            'start_time.required' => 'Show start time is required.',
-            'end_time.required' => 'Show end time is required.',
-            'ticket_price.required' => 'Ticket price is required.',
-            'description.required' => 'Show description is required.',
-            'venue_id.required' => 'Show venue is required.'
+            'name.unique' => 'Venue name should be unique.',
+            'name.required' => 'Venue name is required.',
+            'address.required' => 'Venue address is required.',
+            'capacity.required' => 'Venue capacity is required.',
+            'phone.required' => 'Venue phone number is required.',
+            'email.required' => 'Venue email address is required.'
         ];
 
         $request->validate($rules, $messages);
 
-        $show = new Show;
-        $show->name = $request->name;
-        $show->date = $request->date;
-        $show->start_time = $request->start_time;
-        $show->end_time = $request->end_time;
-        $show->ticket_price = $request->ticket_price;
-        $show->description = $request->description;
-        $show->venue_id = $request->venue_id;
-        $show->timestamps = $request->timestamps;
-        $show->save();
+        $venue = new Venue;
+        $venue->name = $request->name;
+        $venue->address = $request->address;
+        $venue->capacity = $request->capacity;
+        $venue->phone = $request->phone;
+        $venue->email = $request->email;
+        $venue->timestamps = $request->timestamps;
+        $venue->save();
 
         return redirect()
-        ->route('shows.index')
-        ->with('status', 'Created a new show :)');
+        ->route('venues.index')
+        ->with('status', 'Created a new venue :)');
     }
 
     /**
@@ -78,9 +72,9 @@ class VenueController extends Controller
      */
     public function show(string $id)
     {
-        $show = Show::findOrFail($id);
-        return view('shows.show', [
-            'show' => $show
+        $venue = Venue::findOrFail($id);
+        return view('venues.show', [
+            'venue' => $venue
         ]);
     }
 
@@ -89,9 +83,9 @@ class VenueController extends Controller
      */
     public function edit(string $id)
     {
-        $show = Show::findOrFail($id);
-        return view('shows.edit', [
-            'show' => $show
+        $venue = Venue::findOrFail($id);
+        return view('venues.edit', [
+            'venue' => $venue
         ]);
     }
 
@@ -105,41 +99,35 @@ class VenueController extends Controller
         //validation rules
         $rules = [
             'name' => 'required|string|unique:shows,name|min:2|max:150',
-            'date' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'ticket_price' => 'required',
-            'description' => 'required|string|min:5|max:1000',
-            'venue_id' => 'required'
+            'address' => 'required',
+            'capacity' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
         ];
 
         $messages = [
-            'name.unique' => 'Show title should be unique.',
-            'name.required' => 'Show name is required.',
-            'date.required' => 'Show date is required.',
-            'start_time.required' => 'Show start time is required.',
-            'end_time.required' => 'Show end time is required.',
-            'ticket_price.required' => 'Ticket price is required.',
-            'description.required' => 'Show description is required.',
-            'venue_id.required' => 'Show venue is required.'
+            'name.unique' => 'Venue name should be unique.',
+            'name.required' => 'Venue name is required.',
+            'address.required' => 'Venue address is required.',
+            'capacity.required' => 'Venue capacity is required.',
+            'phone.required' => 'Venue phone number is required.',
+            'email.required' => 'Venue email address is required.'
         ];
 
         $request->validate($rules, $messages);
 
-        $show = Show::findOrFail($id);
-        $show->name = $request->name;
-        $show->date = $request->date;
-        $show->start_time = $request->start_time;
-        $show->end_time = $request->end_time;
-        $show->ticket_price = $request->ticket_price;
-        $show->description = $request->description;
-        $show->venue_id = $request->venue_id;
-        $show->timestamps = $request->timestamps;
-        $show->save();
+        $venue = Show::findOrFail($id);
+        $venue->name = $request->name;
+        $venue->address = $request->address;
+        $venue->capacity = $request->capacity;
+        $venue->phone = $request->phone;
+        $venue->email = $request->email;
+        $venue->timestamps = $request->timestamps;
+        $venue->save();
 
         return redirect()
-        ->route('shows.index')
-        ->with('status', 'Updated the show :)');
+        ->route('venues.index')
+        ->with('status', 'Updated the venue :)');
 
     }
 
@@ -149,10 +137,10 @@ class VenueController extends Controller
     public function destroy(string $id)
     {
 
-        $show = Show::findOrFail($id);
-        $show->delete();
+        $venue = Venue::findOrFail($id);
+        $venue->delete();
 
-        return redirect()->route('shows.index')->with('status', 'Selected show deleted successfully :)');
+        return redirect()->route('venues.index')->with('status', 'Selected venue deleted successfully :)');
         
     }
 }
