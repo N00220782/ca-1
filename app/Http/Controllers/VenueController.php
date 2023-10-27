@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Show;
+use App\Models\Venue;
 
-class ShowController extends Controller
+class VenueController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $shows = Show::all();
-        return view('shows.index', [
-            'shows' => $shows
+        $venues = Venue::all();
+        return view('venues.index', [
+            'venues' => $venues
         ]);
     }
 
@@ -23,7 +23,7 @@ class ShowController extends Controller
      */
     public function create()
     {
-        return view('shows.create');
+        return view('venues.create');
     }
 
     /**
