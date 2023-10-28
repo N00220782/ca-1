@@ -15,37 +15,58 @@ Shows
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Title
+                    Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Snippet
+                    Date
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Created
+                    Start Time
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Action
+                    End Time
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Ticket Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Venue
                 </th>
             </tr>
         </thead>
         <tbody>
-            @forelse($todos as $todo)
+            @forelse($shows as $show)
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $todo->title }}
+                    {{ $show->name }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $todo->body }}
+                    {{ $show->date }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $todo->created_at }}
+                    {{ $show->start_time }}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="{{ route('todos.show', $todo->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    {{ $show->end_time }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $show->ticket_price }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $show->description }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $show->venue_id }}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="{{ route('shows.show', $show->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
             </tr>
             @empty
-            <h4>no todos found</h4>
+            <h4>No shows found</h4>
         @endforelse
         </tbody>
     </table>
