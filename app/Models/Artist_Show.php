@@ -10,10 +10,10 @@ class Artist_Show extends Model
     use HasFactory;
 
     public function artist(){
-        return $this->hasOne(Artist::class);
+        return $this->belongsTo(Artist::class);
     }
 
     public function show(){
-        return $this->hasOne(Show::class);
+        return $this->belongsTo(Show::class);
     }
 }

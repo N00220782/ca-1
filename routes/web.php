@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowController;
+use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\VenueController;
+use App\Http\Controllers\Artist_ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +28,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('shows', ShowController::class);
+    Route::resource('venues', VenueController::class);
+    Route::resource('artists', ArtistController::class);
+    Route::resource('artist_shows', Artist_ShowController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
