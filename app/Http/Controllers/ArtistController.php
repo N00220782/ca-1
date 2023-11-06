@@ -7,6 +7,7 @@ use App\Models\Artist;
 
 class ArtistController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      */
