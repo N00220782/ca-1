@@ -98,7 +98,7 @@ class VenueController extends Controller
 
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:shows,name|min:2|max:150',
+            'name' => 'required|string|min:2|max:150',
             'address' => 'required',
             'capacity' => 'required',
             'phone' => 'required',
@@ -106,7 +106,6 @@ class VenueController extends Controller
         ];
 
         $messages = [
-            'name.unique' => 'Venue name should be unique.',
             'name.required' => 'Venue name is required.',
             'address.required' => 'Venue address is required.',
             'capacity.required' => 'Venue capacity is required.',

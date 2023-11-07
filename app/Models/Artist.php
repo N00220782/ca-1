@@ -10,6 +10,6 @@ class Artist extends Model
     use HasFactory;
 
     public function shows(){
-        return hasMany(Show::class);
+        return $this->belongsToMany(Show::class, 'artist__shows');
     }
 }

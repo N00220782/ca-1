@@ -37,7 +37,7 @@ class ArtistController extends Controller
         //validation rules
         $rules = [
             'name' => 'required|string|unique:artists,name|min:2|max:150',
-            'genre' => 'required'
+            'genre' => 'required|in:pop,rock,metal,jazz,hip hop,electronic'
         ];
 
         $messages = [
@@ -90,12 +90,11 @@ class ArtistController extends Controller
 
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:artists,name|min:2|max:150',
-            'genre' => 'required'
+            'name' => 'required|string|min:2|max:150',
+            'genre' => 'required|in:pop,rock,metal,jazz,hip hop,electronic'
         ];
 
         $messages = [
-            'name.unique' => 'Artist name should be unique.',
             'name.required' => 'Artist name is required.',
             'genre.required' => 'Artist genre is required.'
         ];

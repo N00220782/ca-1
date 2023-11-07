@@ -14,6 +14,6 @@ class Show extends Model
     }
 
     public function artists(){
-        return hasMany(Artist::class);
+        return $this->belongsToMany(Artist::class, 'artist__shows');
     }
 }

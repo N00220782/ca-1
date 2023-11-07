@@ -22,8 +22,8 @@ Edit a Show
             @endif
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="date">Date</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" name="date" id="date" value="{{ old('date') ? :$show->time }}" />
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="date">Date (Format: dd/mm/yyyy)</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="date" id="date" value="{{ old('date') ? :$show->time }}" />
             @if($errors->has('date'))
             <span> {{ $errors->first('date') }}
             @endif
@@ -57,9 +57,24 @@ Edit a Show
             @endif
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="venue_id">Venue</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="venue_id" id="venue_id" value="{{ old('venue_id') ? :$show->venue_id }}" />
-            @if($errors->has('venue_id'))
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="venue_id">Venue</label>
+              <div class="relative">
+                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="venue_id" name="venue_id">
+                    
+                    @forelse($venues as $venue)
+                    <option value={{$venue->id}}>{{ $venue->name}}</option>
+                    @empty
+                <h4>No venues found</h4>
+                @endforelse
+                
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+
+                
+              </div>
+              @if($errors->has('venue_id'))
             <span> {{ $errors->first('venue_id') }}
             @endif
         </div>

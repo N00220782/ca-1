@@ -20,12 +20,6 @@ View Artist: {{ $artist->name }}
             <th scope="col" class="px-6 py-3">
                 Genre
             </th>
-            <th scope="col" class="px-6 py-3">
-                Edit
-            </th>
-            <th scope="col" class="px-6 py-3">
-                Delete
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -36,19 +30,19 @@ View Artist: {{ $artist->name }}
             <td class="px-6 py-4">
                 {{ $artist->genre }}
             </td>
-            <td class="px-6 py-4">
-                <a href=" {{ route('artists.edit', $artist->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-            </td>
-            <td class="px-6 py-4">
-                <form method="POST" action="{{ route('artists.destroy', $artist->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
-                    <br>
-                </form>
-            </td>
         </tr>
     </tbody>
 </table>
+
+<br>
+<a href=" {{ route('artists.edit', $artist->id) }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+<br>
+<br>
+<form method="POST" action="{{ route('artists.destroy', $artist->id) }}">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Delete</button>
+    <br>
+</form>
 
 @endsection

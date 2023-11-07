@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Show;
+use App\Models\Venue;
 
 class ShowController extends Controller
 {
@@ -23,7 +24,10 @@ class ShowController extends Controller
      */
     public function create()
     {
-        return view('shows.create');
+        $venues = Venue::all();
+        return view('shows.create', [
+            'venues' => $venues
+        ]);
     }
 
     /**
@@ -41,7 +45,7 @@ class ShowController extends Controller
             'end_time' => 'required',
             'ticket_price' => 'required',
             'description' => 'required|string|min:5|max:1000',
-            'venue_id' => 'required'
+            'venue_id' => 'required|exists:venues,id'
         ];
 
         $messages = [
@@ -89,9 +93,11 @@ class ShowController extends Controller
      */
     public function edit(string $id)
     {
+        $venues = Venue::all();
         $show = Show::findOrFail($id);
         return view('shows.edit', [
-            'show' => $show
+            'show' => $show,
+            'venues' => $venues
         ]);
     }
 
@@ -104,17 +110,16 @@ class ShowController extends Controller
 
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:shows,name|min:2|max:150',
+            'name' => 'required|string|min:2|max:150',
             'date' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
             'ticket_price' => 'required',
             'description' => 'required|string|min:5|max:1000',
-            'venue_id' => 'required'
+            'venue_id' => 'required|exists:venues,id'
         ];
 
         $messages = [
-            'name.unique' => 'Show title should be unique.',
             'name.required' => 'Show name is required.',
             'date.required' => 'Show date is required.',
             'start_time.required' => 'Show start time is required.',
