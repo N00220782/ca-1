@@ -116,7 +116,7 @@ class VenueController extends Controller
 
         $request->validate($rules, $messages);
 
-        $venue = Show::findOrFail($id);
+        $venue = Venue::findOrFail($id);
         $venue->name = $request->name;
         $venue->address = $request->address;
         $venue->capacity = $request->capacity;

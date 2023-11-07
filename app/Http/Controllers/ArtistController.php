@@ -65,7 +65,7 @@ class ArtistController extends Controller
     public function show(string $id)
     {
         $artist = Artist::findOrFail($id);
-        return view('artist.show', [
+        return view('artists.show', [
             'artist' => $artist
         ]);
     }
