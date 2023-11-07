@@ -10,7 +10,9 @@ Edit a Show
 @section('content')
 <br>
 
-
+<!--Form that edits existing shows using the POST method-->
+<!--Functions the same as the create form in terms of validating and storing data
+but instead updates existing data without creating a new show-->
 <div class="w-full max-w-xs">
     <form action="{{ route('shows.update', $show->id) }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf

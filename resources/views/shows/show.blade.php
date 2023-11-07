@@ -10,7 +10,8 @@ View Show: {{ $show->name }} ({{ $show->date }})
 @section('content')
 <br>
 
-
+<!--Table that displays a selected show's data-->
+<!--Allows a logged in user to edit and delete the particular show's data-->
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -57,6 +58,8 @@ View Show: {{ $show->name }} ({{ $show->date }})
             <td class="px-6 py-4">
                 {{ $show->description }}
             </td>
+            <!--Goes into the venue table for the appropriate venue name
+                to display in this show-->
             <td class="px-6 py-4">
                 {{ $show->venue->name }}
             </td>
@@ -66,6 +69,7 @@ View Show: {{ $show->name }} ({{ $show->date }})
 
 <br>
 
+<!--Table that displays what artists are playing in the selected show-->
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -75,7 +79,7 @@ View Show: {{ $show->name }} ({{ $show->date }})
         </tr>
     </thead>
     <tbody>
-
+<!--Loop that displays the appropriate artist from the artists table-->
         @forelse($show->artists as $artist)
         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

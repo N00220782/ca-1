@@ -10,7 +10,8 @@ View Artist: {{ $artist->name }}
 @section('content')
 <br>
 
-
+<!--Table that displays a selected artist's data-->
+<!--Allows a logged in user to edit and delete the particular artist's data-->
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -31,6 +32,37 @@ View Artist: {{ $artist->name }}
                 {{ $artist->genre }}
             </td>
         </tr>
+    </tbody>
+</table>
+
+<br>
+
+<!--Table that displays which shows the artists are playing in-->
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                Show(s)
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Date(s)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+<!--Loop that displays the appropriate show from the shows table-->
+        @forelse($artist->shows as $show)
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ $show->name }}
+            </th>
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ $show->date }}
+            </th>
+        </tr>
+            @empty
+            <h4>No shows found</h4>
+        @endforelse
     </tbody>
 </table>
 

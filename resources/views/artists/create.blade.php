@@ -10,10 +10,11 @@ Create an Artist
 @section('content')
 <br>
 
-
+<!--Artists Create Form that stores inputted data using the POST method-->
 <div class="w-full max-w-xs">
     <form action="{{ route('artists.store') }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
+        <!--Input fields that display error messages if data is not valid-->
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name" value="{{ old('name') }}"/>
@@ -22,6 +23,7 @@ Create an Artist
             @endif
         </div>
         <div class="mb-4">
+          <!--Drop down menu for ENUM genre options-->
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="genre">Genre</label>
               <div class="relative">
                 <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="genre" name="genre">

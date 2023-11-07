@@ -9,6 +9,8 @@ class Venue extends Model
 {
     use HasFactory;
 
+    //Venues can have many shows
+
     public function shows(){
         return hasMany(Show::class);
     }

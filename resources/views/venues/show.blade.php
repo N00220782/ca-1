@@ -10,7 +10,8 @@ View Venue: {{ $venue->name }}
 @section('content')
 <br>
 
-
+<!--Table that displays a selected venue's data-->
+<!--Allows a logged in user to edit and delete the particular venue's data-->
 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
